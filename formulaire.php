@@ -36,9 +36,9 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 							if($_GET['coeff'] > 0){	
 								$coeff = $_GET['coeff'];	
 
-								$req = "INSERT INTO note VALUES('$nom','$prenom','$matiere','$note','$coeff')";
+								$req = "INSERT INTO note VALUES('$nom','$prenom','non','$note','$coeff')";
 								$res = mysqli_query($connexion,$req) or die("Erreur insert note.");
-								$affiche = "Tout est bon ! ";
+								header('Location: moyenne.php');
 
 							}else{
 								$affiche = "Coefficient invalide.";
@@ -71,12 +71,12 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>FORMULAIRE</title>
 </head>
 <body>
 	<div align="center">
 		<h1>Veuillez saisir la note, le coefficient, la matière et l'étudiant</h1>
-		
+
 		<form method="GET" action="">
 			<table width="50%">
 				<tr>
@@ -120,12 +120,19 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 				</tr>
 				<tr>
 					<td>
-						<select>
+						<select name="matiere">
 						<?php
 							while($line = mysqli_fetch_assoc($res2)){
 								extract($line);
 								echo "<option value='$nom'>$nom</option>";
-							}						  
+							}
+							if(isset($_GET['confirm'])){
+								$matiere = $_GET['matiere'];
+								$enom = $_GET['nom'];
+								$req = "UPDATE note SET matiere = '$matiere' WHERE nom='$enom' AND prenom='$prenom'
+								AND note = '$note'";	
+								$res = mysqli_query($connexion,$req)or die("ERROR SET MATIERE");
+							}				  
 							
 						?>
 						</select>	 
@@ -152,6 +159,11 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 				<tr>
 					<td>
 						<input type="submit" name="confirm" value="Valider">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="moyennes.php">Voir les moyennes</a>
 					</td>
 				</tr>
 				
