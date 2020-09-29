@@ -34,9 +34,10 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 						if($exists != 0 && $exist != 0){	
 
 							if($_GET['coeff'] > 0){	
-								$coeff = $_GET['coeff'];	
+								$coeff = $_GET['coeff'];
+								$matiere = $_GET['matiere'];
 
-								$req = "INSERT INTO note VALUES('$nom','$prenom','non','$note','$coeff')";
+								$req = "INSERT INTO note VALUES('$nom','$prenom','$matiere','$note','$coeff')";
 								$res = mysqli_query($connexion,$req) or die("Erreur insert note.");
 								header('Location: moyenne.php');
 
@@ -125,13 +126,6 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 							while($line = mysqli_fetch_assoc($res2)){
 								extract($line);
 								echo "<option value='$nom'>$nom</option>";
-							}
-							if(isset($_GET['confirm'])){
-								$matiere = $_GET['matiere'];
-								$enom = $_GET['nom'];
-								$req = "UPDATE note SET matiere = '$matiere' WHERE nom='$enom' AND prenom='$prenom'
-								AND note = '$note'";	
-								$res = mysqli_query($connexion,$req)or die("ERROR SET MATIERE");
 							}				  
 							
 						?>
@@ -163,7 +157,7 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 				</tr>
 				<tr>
 					<td>
-						<a href="moyennes.php">Voir les moyennes</a>
+						<a href="moyenne.php">Voir les moyennes</a>
 					</td>
 				</tr>
 				
