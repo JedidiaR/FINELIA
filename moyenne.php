@@ -7,9 +7,6 @@ $bdd = "finelia";
 
 $connexion = mysqli_connect($host,$user,$pwd,$bdd) or die("Echec connexion.");
 
-$req = "SELECT nom FROM matiere";
-$res = mysqli_query($connexion,$req) or die("Erreur requete note.");
-
 ?>
 
 <!DOCTYPE html>
@@ -29,18 +26,31 @@ $res = mysqli_query($connexion,$req) or die("Erreur requete note.");
 
 					<td>MOYENNE GLOBALE</td>
 				</tr>
-				<tr>
+				
 					<?php
-						#pour chaque matiere, calculer la moyenne de l'etudiant
-						while($line = mysqli_fetch_assoc($res)){
-							extract($line);
-							
-							echo "<tr><td>$nom $prenom</td><td>$matiere</td><td>$result</td></tr>";
+						#selection de tous les etudiants
+						$req = "SELECT DISTINCT nom,prenom FROM note";
+						$res = mysqli_query($connexion,$req)or die ("ERROR SELECT DISTINCT");
 
+						while($line = mysqli_fetch_assoc($res)){
+
+							$nom = $line['nom'];
+							$prenom = $line['prenom'];
+
+							#calcul des moyennes pour chaque etudiant different grace au DISTINCT
+							$reqq = "SELECT SUM(note*coeff) as sum,SUM(coeff) as co FROM note
+							WHERE nom = '$nom' AND prenom='$prenom'";
+							$ress = mysqli_query($connexion,$reqq) or die ("ERROR SELECT");
+							$li = mysqli_fetch_assoc($ress);
+
+							$avg = $li['sum'] / $li['co'];
+
+							echo "<tr><td>$nom</td><td>$prenom</td><td>$avg</td></tr>";
+							
 						}
 
 					?>
-				</tr>
+				
 			</table>
 
 		</form>

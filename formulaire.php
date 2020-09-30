@@ -19,6 +19,8 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 
 			if(!empty($_GET['nom'])){
 				$nom = isset($_GET['nom'])? $_GET['nom']:NULL;
+				$nom = mysqli_real_escape_string($connexion,$nom);#eviter les injections sql
+
 
 				$req = "SELECT nom FROM etudiant WHERE nom = '$nom'";
 				$res = mysqli_query($connexion,$req) or die("Erreur requete nom.");
@@ -26,6 +28,7 @@ $matiere = isset($_GET['matiere'])?$_GET['matiere']:NULL;
 
 				if(!empty($_GET['prenom'])){
 					$prenom = isset($_GET['prenom'])? $_GET['prenom']:NULL;
+					$prenom = mysqli_real_escape_string($connexion,$prenom);
 
 					$req = "SELECT prenom FROM etudiant WHERE prenom = '$prenom'";
 					$res = mysqli_query($connexion,$req) or die("Erreur requete prenom.");
