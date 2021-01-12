@@ -13,7 +13,7 @@ class Router
 		$this->setUri($uri);
 		if(file_exists($this->routesPath)){
 			//[/] => Array ( [controller] => Global [action] => default )
-			$this->routes = yaml_parse_file($this->routesPath);
+			$this->routes = yml_parse_file($this->routesPath);
 
 			if( !empty($this->routes[$this->uri]) && $this->routes[$this->uri]["controller"] && $this->routes[$this->uri]["action"]){
 
@@ -40,7 +40,7 @@ class Router
 
 
 	public function setAction($action){
-		$this->action = $action."Action";
+		$this->action = $action;
 	}
 
 

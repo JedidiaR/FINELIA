@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App\Controller;
 
 class View
 {
@@ -8,9 +8,8 @@ class View
 
 	private $template; // back ou front
 	private $view; // home admin login et logout
-	private $data = [];
 
-	public function __construct( $view, $template = "front" ){
+	public function __construct( $view, $template ){
 
 		$this->setTemplate($template);
 		$this->setView($view);
@@ -19,15 +18,15 @@ class View
 
 	public function setTemplate($template){
 		if(file_exists("Views/Templates/".$template.".tpl.php")){
-			$this->template = "Views/Templates/".$template.".tpl.php";
+			$this->view = "Views/Templates/".$template.".tpl.php";
 		}else{
 			die("Erreur de template");
 		}
 	}
 
 	public function setView($view){
-		if(file_exists("Views/".$view.".view.php")){
-			$this->view = "Views/".$view.".view.php";
+		if(file_exists("Views/".$view.".v.php")){
+			$this->template = "Views/".$view.".v.php";
 		}else{
 			die("Erreur de vue");
 		}
@@ -39,7 +38,7 @@ class View
 	}
 
 
-	public function __destruct(){
+	public function destruct(){
 		//$this->data = ["pseudo"=>"Super Prof"] ==> $pseudo = "Super Prof"
 		/*
 		foreach ($this->data as $key => $value) {
@@ -51,7 +50,7 @@ class View
 		*/
 		extract($this->data);
 
-		include $this->template;
+		echo $this->template;
 	}
 
 

@@ -1,6 +1,13 @@
+//Consignes -> Envoyer un mail avec votre Nom et Prénom et une liste de tous les bugs rencontrés.
+//Attention à ne pas modificer ce qui n'est pas nécessaire !!!
+//Veuillez aussi développer une class permettant de gérer de manière intelligente les erreurs et exceptions comme par exemple une page 404 (Attention au code HTTP dans les entêtes)
+//Triche 0/20 sans retour possible.
+
+/Total de bugs ou erreurs : 25
+
 RewriteEngine On 
 
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule . /index.php [L,QSA]
+RewriteRule * /main.php [L,QSA]

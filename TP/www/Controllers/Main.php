@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App;
 
-use App\Core\View;
+use App\View;
 
 class Main{
 
