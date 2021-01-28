@@ -1,0 +1,65 @@
+
+logo => Accueil
+
+ACCUEIL :
+ SIDEBAR dans cet ordre:
+  verset du jour généré aléatoirement
+*  evenement a venir :
+   aperçu:date, heure, miniature, debut de l'invitation
+   page: date heure flyer invitation texte complet
+*  calendrier: same as incoming event
+ Articles les plus lus:
+  best 4 minia et titre
+
+
+HEADER
+
+* "le site de la section jeunesse de la FPMA"
+fonction Recherche:
+ articles et contenu
+* faire un don
+* ONGLETS:
+ Présentation : EXG_046
+  qu'est-ce que la stk
+  quelles sont ses missions
+  qu'est-ce donc que la stk nationale
+  « Mot du président » dont le contenu sera fourni par le président national STK
+  « Commission nationales » dont le contenu dans le site actuel contient la présentation des différentes commissions nationales STK
+  « Sections régionales et locales » dont le contenu dans le site actuel contient la « Carte de France des sections STK »
+  « Règlement Intérieur de la STK » dont le contenu dans le site actuel contient le dernier règlement intérieur à date
+  « Hymne STK National – Ry Tanora Namako ! » dont le contenu dans le site actuel contient toutes les informations par rapport à l’hymne
+
+* Spirituel
+* Stk News
+* Photos
+* Vidéos
+* Inscriptions rnstk/agstk
+
+
+FOOTER
+
+ logo stk national
+ logo FPMA link vers site fpma
+ le site de la section jeunesse de la FPMA
+ theme et verset next event stk natonal
+ all social networks
+* contact : nom prenom mail tafo sujet message
+* CGU
+ link App STK
+ viens découvrir:
+  spirituel: tous les partages + EXG_038
+  stk news
+  photos
+  videos
+
+EXG_035 :
+On doit pouvoir trouver dans le footer une partie « Qui sommes-nous ? » avec les liens qui redirigent vers les différents contenus de l’onglet « Présentation » : 
+« Qu'est-ce que la STK ? » 
+« Quelles sont ses missions ? » 
+« Qu’est-ce que le STK National ? » 
+« Mot du président »
+« Commission nationales »
+« Sections régionales et locales » 
+« Carte de France des sections STK »
+« Règlement Intérieur de la STK » 
+« Hymne STK National – Ry Tanora Namako ! »
